@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Recommendations | Bemyyatri</title>
+    <meta name="description" content="Explore luxury, boutique, and family-friendly international hotel recommendations curated by Bemyyatri.">
+    <link rel="canonical" href="https://www.bemyyatri.com/hotels.html">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Bemy<span>yatri</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="hotels.html" class="active">Hotels</a></li>
+                <li><a href="forex.html">Forex</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="booking.html" class="btn btn-primary">Plan Trip</a>
+                <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="section-header">
+            <h2>Hotel Recommendations</h2>
+            <p>Handpicked luxury and boutique hotel suggestions for your international holidays. Note: These are illustrative recommendations; availability is confirmed offline.</p>
+        </div>
+        <div class="grid-3" id="hotelsContainer">
+            <!-- Dynamically populated via JS from CONFIG.hotels -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col"><h3 class="logo" style="color:var(--white);">Bemy<span>yatri</span></h3><p>Your premier partner for international holidays.</p></div>
+            <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="about.html">About Us</a></li><li><a href="tours.html">Tours</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+            <div class="footer-col"><h3>Contact Details</h3><p>Connaught Place, New Delhi</p><p>+91 97119 09240</p><p>info@bemyyatri.com</p></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Bemyyatri. All rights reserved.</p><div class="footer-links-inline"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms</a></div></div>
+    </footer>
+    <a href="https://wa.me/919711909240" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script src="js/config.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("hotelsContainer");
+            CONFIG.hotels.forEach(hotel => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <img src="${hotel.image}" alt="${hotel.name}" class="card-img">
+                    <div class="card-body">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 6px; display: block;">${hotel.category} • ${hotel.location}</span>
+                        <h3 class="card-title">${hotel.name}</h3>
+                        <p class="card-text">${hotel.description}</p>
+                        <div class="card-actions">
+                            <a href="https://wa.me/919711902940?text=Hello%20Bemyyatri,%20I%20would%20like%20hotel%20recommendations%20for%20${encodeURIComponent(hotel.name)}." class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
